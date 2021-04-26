@@ -1,0 +1,26 @@
+.c-tasks {
+  margin-top: 50px;
+}
+
+.c-tasks .tasks {
+  display: flex;
+  width: 500px;
+}
+
+.c-tasks .completed {
+  text-decoration-line: line-through;
+  color: gray;
+}
+
+.c-tasks .delete {
+  color: red;
+  display: none;
+}
+
+.delete:hover, .tasks:hover + .delete {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  top: -40px;
+  right: 240px;
+}

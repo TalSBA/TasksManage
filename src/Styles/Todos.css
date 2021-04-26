@@ -1,0 +1,17 @@
+.p-todos h1 {
+  font-size: 48px;
+  font-family: "amatic";
+}
+
+@font-face {
+  font-family: amatic;
+  src: url("./Amatic_SC/AmaticSC-Bold.ttf");
+}
+
+.p-todos .input-list {
+  position: relative;
+}
+
+.p-todos .bottom-lable {
+  padding-right: 50px;
+}
