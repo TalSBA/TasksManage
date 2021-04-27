@@ -1,3 +1,17 @@
+.background{
+    background: url("./sticky-notes-background-32122.png");
+    background-repeat: no-repeat;
+    width: 800px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.p-todos{
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 150px;
+}
+
 .p-todos h1 {
   font-size: 48px;
   font-family: "amatic";

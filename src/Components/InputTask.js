@@ -5,7 +5,7 @@ function InputTask({onAddTask}) {
   const [inputValue, setValue] = useState("");
 
   function onEnterPress(e){
-    if (e.charCode === 13) {
+    if (e.charCode === 13 && e.target.value.trim()) {
       onAddTask(e.target.value);
       setValue("");
     }

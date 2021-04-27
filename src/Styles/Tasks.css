@@ -4,7 +4,8 @@
 
 .c-tasks .tasks {
   display: flex;
-  width: 500px;
+  width: 400px;
+  border-bottom: 1px solid #000;
 }
 
 .c-tasks .completed {
@@ -17,10 +18,11 @@
   display: none;
 }
 
-.delete:hover, .tasks:hover + .delete {
+.delete:hover,
+.tasks:hover + .delete {
   display: inline-block;
   position: relative;
   cursor: pointer;
   top: -40px;
-  right: 240px;
+  left: 100px;
 }
