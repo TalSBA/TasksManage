@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
+
 function InputTask({onAddTask}) {
   const [inputValue, setValue] = useState("");
 
@@ -11,7 +12,7 @@ function InputTask({onAddTask}) {
     }
   }
   return (
-    <div>
+    <div className="c-input">
       <Form.Control
         type="text"
         placeholder="Add new task..."

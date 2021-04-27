@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Badge, Col, Row } from "react-bootstrap";
+import { Badge, Col, Container, Row } from "react-bootstrap";
 import InputTask from "../Components/InputTask";
 import ModalMessage from "../Components/ModalMessage";
 import TasksList from "../Components/TasksList";
@@ -75,50 +75,56 @@ function Todos(props) {
     });
   }
   return (
-    <Row>
-      <div className="background">
-        <div className="p-todos">
-          <div className="input-list">
-            <h1>Todos</h1>
-            <InputTask onAddTask={addTask} />
-            <TasksList
-              tasks={todosList}
-              checkedChange={updateTaskStatus}
-              onDelete={handleDeleteClick}
+    <Container>
+      <Row className="justify-content-md-center">
+        <div className="background">
+          <div className="p-todos">
+            <div className="input-list">
+              <h1>Todos</h1>
+              <Col>
+                <InputTask onAddTask={addTask} />
+                <TasksList
+                  tasks={todosList}
+                  checkedChange={updateTaskStatus}
+                  onDelete={handleDeleteClick}
+                />
+              </Col>
+            </div>
+            <Col>
+              <span className="bottom-lable">{activeCount} items left</span>
+              <Badge
+                pill
+                variant={variant === "all" ? "primary" : ""}
+                onClick={() => setVariant("all")}
+              >
+                All
+              </Badge>
+              <Badge
+                pill
+                variant={variant === "active" ? "primary" : ""}
+                onClick={() => setVariant("active")}
+              >
+                Active
+              </Badge>
+              <Badge
+                pill
+                variant={variant === "completed" ? "primary" : ""}
+                onClick={() => setVariant("completed")}
+              >
+                Completed
+              </Badge>
+            </Col>
+            <ModalMessage
+              show={showModal.show}
+              onCloseModal={handleCloseModal}
+              message="Are you sure you want to delete an active item :"
+              title="Confirm Deletion"
+              task={showModal.task}
             />
           </div>
-          <span className="bottom-lable">{activeCount} items left</span>
-          <Badge
-            pill
-            variant={variant === "all" ? "primary" : ""}
-            onClick={() => setVariant("all")}
-          >
-            All
-          </Badge>
-          <Badge
-            pill
-            variant={variant === "active" ? "primary" : ""}
-            onClick={() => setVariant("active")}
-          >
-            Active
-          </Badge>
-          <Badge
-            pill
-            variant={variant === "completed" ? "primary" : ""}
-            onClick={() => setVariant("completed")}
-          >
-            Completed
-          </Badge>
-          <ModalMessage
-            show={showModal.show}
-            onCloseModal={handleCloseModal}
-            message="Are you sure you want to delete an active item :"
-            title="Confirm Deletion"
-            task={showModal.task}
-          />
         </div>
-      </div>
-    </Row>
+      </Row>
+    </Container>
   );
 }
 

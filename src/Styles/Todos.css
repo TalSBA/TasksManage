@@ -1,13 +1,14 @@
 .background{
     background: url("./sticky-notes-background-32122.png");
     background-repeat: no-repeat;
-    width: 800px;
+    background-size: cover;
+    width: 70%;
     margin: 0 auto;
     height: 100vh;
 }
 
 .p-todos{
-    width: 400px;
+    width: 60%;
     margin: 0 auto;
     padding-top: 150px;
 }
