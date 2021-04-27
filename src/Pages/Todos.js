@@ -7,22 +7,19 @@ import "../Styles/Todos.css";
 
 function Todos(props) {
   const [tasks, setTasks] = useState([]);
-  const [filteredTasks, setFilteredTasks] = useState([]);
   const [activeCount, setActiveCount] = useState(0);
-  const [allVariant, setAllVariant] = useState("primary");
-  const [activeVariant, setActiveVariant] = useState("");
-  const [completedVariant, setCompletedVariant] = useState("");
+  const [variant, setVariant] = useState("all");
   const [showModal, setShowModal] = useState({ show: false, task: {} });
 
   useEffect(() => {
     let count = 0;
-    filteredTasks.forEach((task) => {
+    tasks.forEach((task) => {
       if (task.status === "active") {
         count++;
       }
     });
     setActiveCount(count);
-  }, [filteredTasks]);
+  }, [tasks]);
 
   var ID = function () {
     // Math.random should be unique because of its seeding algorithm.
@@ -32,9 +29,6 @@ function Todos(props) {
   };
   function addTask(task) {
     setTasks(tasks.concat({ id: ID(), value: task, status: "active" }));
-    setFilteredTasks(
-      filteredTasks.concat({ id: ID(), value: task, status: "active" })
-    );
   }
   function updateTaskStatus(isChecked, id) {
     setTasks((prevState) => {
@@ -48,44 +42,10 @@ function Todos(props) {
       }
       return [...prevState];
     });
-
-    setFilteredTasks((prevState) => {
-      let task = prevState.find((task) => id === task.id);
-      if (task !== undefined) {
-        if (isChecked) {
-          task.status = "completed";
-        } else {
-          task.status = "active";
-        }
-      }
-      return [...prevState];
-    });
   }
 
-  function setVariant(value) {
-    let filterTasks;
-    if (value === "all") {
-      setAllVariant("primary");
-      setActiveVariant("");
-      setCompletedVariant("");
-      filterTasks = tasks;
-    }
-    if (value === "active") {
-      setAllVariant("");
-      setActiveVariant("primary");
-      setCompletedVariant("");
-      filterTasks = tasks.filter((task) => task.status === "active");
-    }
-    if (value === "completed") {
-      setAllVariant("");
-      setActiveVariant("");
-      setCompletedVariant("primary");
-      filterTasks = tasks.filter((task) => task.status === "completed");
-    }
-    setFilteredTasks(filterTasks);
-  }
   function handleDeleteClick(id) {
-    filteredTasks.forEach((task) => {
+    tasks.forEach((task) => {
       if (task.id === id) {
         if (task.status === "active") {
           setShowModal({ show: true, task: task });
@@ -106,9 +66,13 @@ function Todos(props) {
   function deleteTask(id) {
     const newTasks = tasks.filter((task) => task.id !== id);
     setTasks(newTasks);
+  }
 
-    const newFilteredTasks = filteredTasks.filter((task) => task.id !== id);
-    setFilteredTasks(newFilteredTasks);
+  let todosList;
+  if (tasks) {
+    todosList = tasks.filter((task) => {
+      return variant === "all" ? task : task.status === variant;
+    });
   }
   return (
     <Row>
@@ -118,25 +82,29 @@ function Todos(props) {
             <h1>Todos</h1>
             <InputTask onAddTask={addTask} />
             <TasksList
-              tasks={filteredTasks}
+              tasks={todosList}
               checkedChange={updateTaskStatus}
               onDelete={handleDeleteClick}
             />
           </div>
           <span className="bottom-lable">{activeCount} items left</span>
-          <Badge pill variant={allVariant} onClick={() => setVariant("all")}>
+          <Badge
+            pill
+            variant={variant === "all" ? "primary" : ""}
+            onClick={() => setVariant("all")}
+          >
             All
           </Badge>
           <Badge
             pill
-            variant={activeVariant}
+            variant={variant === "active" ? "primary" : ""}
             onClick={() => setVariant("active")}
           >
             Active
           </Badge>
           <Badge
             pill
-            variant={completedVariant}
+            variant={variant === "completed" ? "primary" : ""}
             onClick={() => setVariant("completed")}
           >
             Completed
