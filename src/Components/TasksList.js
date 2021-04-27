@@ -7,7 +7,7 @@ function TasksList({ tasks, checkedChange, onDelete }) {
   return (
     <div className="c-tasks">
       {tasks &&
-        tasks.map((task,index) => {
+        tasks.map((task, index) => {
           return (
             <div key={index}>
               <FormControlLabel

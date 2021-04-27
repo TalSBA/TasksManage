@@ -81,17 +81,15 @@ function Todos(props) {
           <div className="p-todos">
             <div className="input-list">
               <h1>Todos</h1>
-              <Col>
-                <InputTask onAddTask={addTask} />
-                <TasksList
-                  tasks={todosList}
-                  checkedChange={updateTaskStatus}
-                  onDelete={handleDeleteClick}
-                />
-              </Col>
+              <InputTask onAddTask={addTask} />
+              <TasksList
+                tasks={todosList}
+                checkedChange={updateTaskStatus}
+                onDelete={handleDeleteClick}
+              />
             </div>
-            <Col>
-              <span className="bottom-lable">{activeCount} items left</span>
+            <span className="bottom-lable">{activeCount} items left</span>
+            <div className="filters">
               <Badge
                 pill
                 variant={variant === "all" ? "primary" : ""}
@@ -113,7 +111,7 @@ function Todos(props) {
               >
                 Completed
               </Badge>
-            </Col>
+            </div>
             <ModalMessage
               show={showModal.show}
               onCloseModal={handleCloseModal}

@@ -1,10 +1,10 @@
 .c-tasks {
   margin-top: 50px;
+  width: 100%;
 }
 
 .c-tasks .tasks {
   display: flex;
-  width: 400px;
   border-bottom: 1px solid #000;
 }
 
@@ -24,5 +24,5 @@
   position: relative;
   cursor: pointer;
   top: -40px;
-  left: 100px;
+  left: 45%;
 }
