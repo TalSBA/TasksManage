@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/TasksManage/static/css/main.535a5839.chunk.css",
+    "main.js": "/TasksManage/static/js/main.90be60b4.chunk.js",
+    "main.js.map": "/TasksManage/static/js/main.90be60b4.chunk.js.map",
+    "runtime-main.js": "/TasksManage/static/js/runtime-main.02154aac.js",
+    "runtime-main.js.map": "/TasksManage/static/js/runtime-main.02154aac.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/TasksManage/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.754b0555.chunk.js": "/TasksManage/static/js/2.754b0555.chunk.js",
+    "static/js/2.754b0555.chunk.js.map": "/TasksManage/static/js/2.754b0555.chunk.js.map",
+    "index.html": "/TasksManage/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/TasksManage/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.535a5839.chunk.css.map": "/TasksManage/static/css/main.535a5839.chunk.css.map",
+    "static/js/2.754b0555.chunk.js.LICENSE.txt": "/TasksManage/static/js/2.754b0555.chunk.js.LICENSE.txt",
+    "static/media/Todos.css": "/TasksManage/static/media/sticky-notes-background-32122.173bbffd.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.02154aac.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.754b0555.chunk.js",
+    "static/css/main.535a5839.chunk.css",
+    "static/js/main.90be60b4.chunk.js"
+  ]
+}
