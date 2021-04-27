@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Badge, Container, Nav, NavbarBrand } from "react-bootstrap";
+import { Badge, Col, Row } from "react-bootstrap";
 import InputTask from "../Components/InputTask";
 import ModalMessage from "../Components/ModalMessage";
 import TasksList from "../Components/TasksList";
@@ -107,50 +107,50 @@ function Todos(props) {
     const newTasks = tasks.filter((task) => task.id !== id);
     setTasks(newTasks);
 
-    const newFilteredTasks = filteredTasks.filter(
-      (task) => task.id !== id
-    );
+    const newFilteredTasks = filteredTasks.filter((task) => task.id !== id);
     setFilteredTasks(newFilteredTasks);
   }
   return (
-    <div className="background">
-      <div className="p-todos">
-        <div className="input-list">
-          <h1>Todos</h1>
-          <InputTask onAddTask={addTask} />
-          <TasksList
-            tasks={filteredTasks}
-            checkedChange={updateTaskStatus}
-            onDelete={handleDeleteClick}
+    <Row>
+      <div className="background">
+        <div className="p-todos">
+          <div className="input-list">
+            <h1>Todos</h1>
+            <InputTask onAddTask={addTask} />
+            <TasksList
+              tasks={filteredTasks}
+              checkedChange={updateTaskStatus}
+              onDelete={handleDeleteClick}
+            />
+          </div>
+          <span className="bottom-lable">{activeCount} items left</span>
+          <Badge pill variant={allVariant} onClick={() => setVariant("all")}>
+            All
+          </Badge>
+          <Badge
+            pill
+            variant={activeVariant}
+            onClick={() => setVariant("active")}
+          >
+            Active
+          </Badge>
+          <Badge
+            pill
+            variant={completedVariant}
+            onClick={() => setVariant("completed")}
+          >
+            Completed
+          </Badge>
+          <ModalMessage
+            show={showModal.show}
+            onCloseModal={handleCloseModal}
+            message="Are you sure you want to delete an active item :"
+            title="Confirm Deletion"
+            task={showModal.task}
           />
         </div>
-        <span className="bottom-lable">{activeCount} items left</span>
-        <Badge pill variant={allVariant} onClick={() => setVariant("all")}>
-          All
-        </Badge>
-        <Badge
-          pill
-          variant={activeVariant}
-          onClick={() => setVariant("active")}
-        >
-          Active
-        </Badge>
-        <Badge
-          pill
-          variant={completedVariant}
-          onClick={() => setVariant("completed")}
-        >
-          Completed
-        </Badge>
-        <ModalMessage
-          show={showModal.show}
-          onCloseModal={handleCloseModal}
-          message="Are you sure you want to delete an active item :"
-          title="Confirm Deletion"
-          task={showModal.task}
-        />
       </div>
-    </div>
+    </Row>
   );
 }
 
